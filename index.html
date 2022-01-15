@@ -7,7 +7,7 @@
    </head>
    <body>
       <div id="main" class="flex-column d-flex vh-100">
-         <div class="d-inline-block m-3">
+         <div class="d-inline-block mx-3">
             <div class="px-1 text-center d-inline fw-bold">Custom setting</div>
             <br />
             <div class="d-inline-flex flex-wrap">
@@ -167,11 +167,17 @@
                   ...setColors(am5.color(0x339933), 3),
                   ...setColors(am5.color(0x66dd33), 5),
                ]);
+            chart.set(
+               'scrollbarY',
+               am5.Scrollbar.new(root, {
+                  orientation: 'vertical',
+               })
+            );
          }
 
          const root = am5.Root.new('chartdiv');
          root.setThemes([am5themes_Animated.new(root)]);
-         const chart = root.container.children.push(am5xy.XYChart.new(root, { layout: root.verticalLayout }));
+         const chart = root.container.children.push(am5xy.XYChart.new(root, { layout: root.verticalLayout, wheelY: 'zoomY' }));
          setupChart();
 
          const xAxis = chart.xAxes.push(
